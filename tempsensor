@@ -1,0 +1,23 @@
+import time
+from w1thermsensor import W1ThermSensor
+sensor = W1ThermSensor()
+
+while True:
+    averages=[]
+    
+
+    for sensor in W1ThermSensor.get_available_sensors():
+        averages.append(sensor.get_temperature())
+        print("Batt Temp: %.2f" % (sensor.get_temperature()))
+        
+    average=sum(averages)/len(averages)
+    print("    ")
+    
+    print("EV Batt Temp %.2f C" %average)
+    print(".......................................................................................................................")
+    print("    ")
+    
+        
+        
+    time.sleep(1)
+    
